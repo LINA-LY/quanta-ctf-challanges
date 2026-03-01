@@ -1,0 +1,43 @@
+name: "Quantum Printer"
+author: L1n4
+category: pwn
+difficulty: medium
+description: |
+  A memory management system with a custom VM that executes bytecode to manipulate quantum-entangled slots.
+  
+  nc quantum.ctf.example.com 1337
+
+value: 500
+type: dynamic
+decay: 450
+minimum: 100
+
+flags:
+  - shellmates{qu4ntum_3nt4ngl3m3nt_1s_d4ng3r0us}
+
+tags:
+  - pwn
+  - heap
+  - vm
+  - custom-allocator
+  - insane
+
+files:
+  - quantum_printer_v2.c
+  - quantum_printer
+
+hints:
+  - cost: 50
+    content: |
+      The VM has several opcodes for memory manipulation. Pay close attention
+      to how LOAD_REL and STORE_REL handle offset parameters. What types are
+      being compared in the boundary checks?
+  
+  - cost: 100
+    content: |
+      The ENTANGLE instruction has some interesting behavior when called
+      multiple times on the same slot. Notice the operator used to update
+      the entangle_target field.
+
+state: visible
+max_attempts: 0

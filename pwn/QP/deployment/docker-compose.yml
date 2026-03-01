@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  quantum_printer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: quantum_printer
+    restart: unless-stopped
+    ports:
+      - "1337:1337"
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    cap_add:
+      - SETUID
+      - SETGID
+    mem_limit: 256m
+    cpus: 1.0
+    pids_limit: 100
+    read_only: true
+    tmpfs:
+      - /tmp:size=10M,mode=1777
+    environment:
+      - TIMEOUT=300
+    networks:
+      - ctf_network
+
+networks:
+  ctf_network:
+    driver: bridge

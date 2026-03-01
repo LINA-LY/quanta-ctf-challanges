@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  compiler-corruption:
+    build: .
+    container_name: compiler-corruption-challenge
+    image: compiler-corruption:latest
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    read_only: false
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - SETUID
+      - SETGID
+    mem_limit: 256m
+    cpus: 0.5
+    volumes:
+      - ./compiler_challenge.c:/challenge/compiler_challenge.c:ro
+      - ./README.md:/challenge/README.md:ro
+      - ./Makefile:/challenge/Makefile:ro

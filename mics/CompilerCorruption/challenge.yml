@@ -1,0 +1,52 @@
+name: "Compiler Corruption"
+author: "L1n4"
+category: misc
+difficulty: medium
+description: |
+  Something went wrong during transmission.Errors block your path to the flag.
+
+
+value: 150
+
+flags:
+  - shellmates{l3x1c4l_p4rs3r_m4st3r}
+
+files:
+  - src/compiler_challenge.c
+  - README.md
+
+tags:
+  - compiler
+  - debugging
+  - lexer
+  - parser
+  - semantic-analysis
+  - type-checking
+  - misc
+
+hints:
+  - cost: 25
+    content: "Each compilation phase follows a specific order. Lexical analysis tokenizes the source, syntax analysis validates grammar, and semantic analysis checks types. Focus on one phase at a time."
+  - cost: 50
+    content: "Lexical errors involve malformed tokens. Syntax errors violate grammar rules. Semantic errors are logically inconsistent but syntactically correct."
+  - cost: 75  
+    content: "Study the CryptoLang specification in the README carefully. Pay attention to valid token formats, required punctuation, and type compatibility rules."
+
+state: visible
+type: standard
+version: "1.0"
+
+requirements:
+  - GCC compiler
+  - Basic understanding of C compilation
+  - Text editor
+
+extra:
+  initial_value: 100
+  decay: 0
+  minimum: 50
+  
+topics:
+  - compilation
+  - compiler-design
+  - debugging
